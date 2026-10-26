@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trại Heo Của HLE 🐷💗 - Chibi Sticker Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pig-fill: #FFD6E4;
+            --pig-line: #F29BB8;
+            --pig-eye: #59253A;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            user-select: none;
+            overflow-x: hidden;
+            /* Pastel Pink Diagonal Stripe Background matching the reference artwork */
+            background-color: #FFD0E0;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                #FFD0E0,
+                #FFD0E0 26px,
+                #FFC2D6 26px,
+                #FFC2D6 52px
+            );
+        }
+
+        .font-baloo {
+            font-family: 'Baloo 2', cursive;
+        }
+
+        /* ================= IDLE & PART ANIMATIONS ================= */
+        @keyframes stickerFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(0.8deg); }
+        }
+        @keyframes earWiggleLeft {
+            0%, 84%, 100% { transform: rotate(0deg); }
+            89% { transform: rotate(-7deg); }
+            94% { transform: rotate(3deg); }
+        }
+        @keyframes earWiggleRight {
+            0%, 82%, 100% { transform: rotate(0deg); }
+            87% { transform: rotate(7deg); }
+            93% { transform: rotate(-3deg); }
+        }
+        @keyframes eyeBlink {
+            0%, 93%, 100% { transform: scaleY(1); }
+            96% { transform: scaleY(0.08); }
+        }
+        @keyframes tailWag {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(14deg); }
+        }
+
+        .pig-idle {
+            animation: stickerFloat 3.4s ease-in-out infinite;
+        }
+        .pig-ear-left {
+            transform-origin: 64px 52px;
+            animation: earWiggleLeft 4.2s ease-in-out infinite;
+        }
+        .pig-ear-right {
+            transform-origin: 156px 52px;
+            animation: earWiggleRight 4.2s ease-in-out infinite;
+        }
+        .pig-eyes-blink {
+            transform-origin: 110px 98px;
+            animation: eyeBlink 4.4s infinite;
+        }
+        .pig-tail-wag {
+            transform-origin: 110px 154px;
+            animation: tailWag 1s ease-in-out infinite;
+        }
+
+        /* ================= INTERACTION ANIMATIONS ================= */
+        @keyframes flipPose {
+            0% { transform: rotateY(90deg) scale(0.82); opacity: 0.3; }
+            65% { transform: rotateY(-10deg) scale(1.04); opacity: 1; }
+            100% { transform: rotateY(0deg) scale(1); opacity: 1; }
+        }
+        .pose-flip {
+            animation: flipPose 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes jellySpank {
+            0% { transform: scale(1, 1) translateY(0); }
+            20% { transform: scale(1.22, 0.78) translateY(9px); }
+            45% { transform: scale(0.89, 1.14) translateY(-15px); }
+            65% { transform: scale(1.08, 0.93) translateY(4px); }
+            82% { transform: scale(0.97, 1.03) translateY(-2px); }
+            100% { transform: scale(1, 1) translateY(0); }
+        }
+        .anim-spank {
+            animation: jellySpank 0.55s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        }
+
+        @keyframes cuddlePat {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.07, 0.93) rotate(-3deg) translateY(4px); }
+            50% { transform: scale(0.96, 1.05) rotate(3deg) translateY(-4px); }
+            75% { transform: scale(1.04, 0.96) rotate(-2deg) translateY(2px); }
+        }
+        .anim-pat {
+            animation: cuddlePat 0.65s ease-in-out !important;
+        }
+
+        @keyframes joyJump {
+            0%, 100% { transform: translateY(0) scale(1, 1); }
+            20% { transform: translateY(6px) scale(1.09, 0.91); }
+            50% { transform: translateY(-30px) scale(0.95, 1.07) rotate(-3deg); }
+            75% { transform: translateY(-10px) scale(1.03, 0.97) rotate(3deg); }
+        }
+        .anim-jump {
+            animation: joyJump 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+        }
+
+        /* Stick & Hand FX */
+        @keyframes caneWhack {
+            0% { transform: translate(35px, -35px) rotate(45deg) scale(0.8); opacity: 0; }
+            30% { transform: translate(10px, -10px) rotate(55deg) scale(1.05); opacity: 1; }
+            55% { transform: translate(-8px, 12px) rotate(-32deg) scale(1.15); opacity: 1; }
+            80% { transform: translate(0px, 4px) rotate(-12deg) scale(1); opacity: 1; }
+            100% { transform: translate(15px, -10px) rotate(15deg) scale(0.9); opacity: 0; }
+        }
+        .cane-fx {
+            animation: caneWhack 0.45s ease-out forwards;
+            transform-origin: bottom right;
+        }
+
+        @keyframes cuteHandRub {
+            0% { transform: translate(-22px, -4px) rotate(-14deg) scale(0.85); opacity: 0; }
+            20% { transform: translate(-16px, 0px) rotate(-10deg) scale(1); opacity: 1; }
+            50% { transform: translate(18px, -4px) rotate(14deg) scale(1.05); opacity: 1; }
+            80% { transform: translate(-14px, 0px) rotate(-10deg) scale(1); opacity: 1; }
+            100% { transform: translate(6px, -14px) rotate(8deg) scale(0.85); opacity: 0; }
+        }
+        .hand-fx {
+            animation: cuteHandRub 0.75s ease-in-out forwards;
+        }
+
+        @keyframes splashBurst {
+            0% { transform: scale(0.2) rotate(-15deg); opacity: 1; }
+            50% { transform: scale(1.25) rotate(8deg); opacity: 1; }
+            100% { transform: scale(1.5) rotate(18deg); opacity: 0; }
+        }
+        .splash-fx {
+            animation: splashBurst 0.55s ease-out forwards;
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(0) scale(0.6) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-38px) scale(1.15) rotate(-8deg); opacity: 1; }
+            100% { transform: translateY(-76px) scale(0.85) rotate(10deg); opacity: 0; }
+        }
+        .particle-fx {
+            animation: floatParticle 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Happy state toggle when patted */
+        .pig-card.is-happy .normal-eyes { opacity: 0; }
+        .pig-card.is-happy .happy-eyes { opacity: 1; }
+        .pig-card.is-happy .cheek-blush { opacity: 1; transform: scale(1.25); }
+
+        /* Spanked state toggle when hit */
+        .pig-card.is-spanked .butt-red-glow { opacity: 0.9; }
+
+        /* Sticker Card & Claymorphism Panels */
+        .clay-panel {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            border: 4px solid #FFFFFF;
+            box-shadow:
+                0 14px 32px -6px rgba(219, 39, 119, 0.18),
+                inset 0 -6px 0 0 #FBCFE8,
+                inset 0 4px 8px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .header-banner {
+            background: linear-gradient(180deg, #FF7597 0%, #EC4899 100%);
+            border: 5px solid #FFFFFF;
+            box-shadow:
+                0 8px 0 #BE185D,
+                0 14px 28px rgba(190, 24, 93, 0.28),
+                inset 0 4px 0 rgba(255, 255, 255, 0.45);
+        }
+
+        .clay-btn {
+            transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+        .clay-btn:active {
+            transform: translateY(5px) scale(0.97);
+        }
+
+        .clay-btn-spank-active {
+            background: linear-gradient(180deg, #FF6B8B 0%, #E11D48 100%);
+            color: white;
+            border: 3px solid #FFE4E6;
+            box-shadow: 0 6px 0 #9F1239, 0 12px 20px rgba(225, 29, 72, 0.32), inset 0 3px 0 rgba(255,255,255,0.45);
+            transform: translateY(-2px);
+        }
+        .clay-btn-pat-active {
+            background: linear-gradient(180deg, #F472B6 0%, #DB2777 100%);
+            color: white;
+            border: 3px solid #FCE7F3;
+            box-shadow: 0 6px 0 #9D174D, 0 12px 20px rgba(219, 39, 119, 0.32), inset 0 3px 0 rgba(255,255,255,0.45);
+            transform: translateY(-2px);
+        }
+        .clay-btn-wish-active {
+            background: linear-gradient(180deg, #FB923C 0%, #EA580C 100%);
+            color: white;
+            border: 3px solid #FFEDD5;
+            box-shadow: 0 6px 0 #9A3412, 0 12px 20px rgba(234, 88, 12, 0.32), inset 0 3px 0 rgba(255,255,255,0.45);
+            transform: translateY(-2px);
+        }
+        .clay-btn-inactive {
+            background: linear-gradient(180deg, #FFFFFF 0%, #FFF1F5 100%);
+            color: #831843;
+            border: 3px solid #FBCFE8;
+            box-shadow: 0 6px 0 #F472B6, 0 8px 15px rgba(0, 0, 0, 0.05), inset 0 2px 0 #FFFFFF;
+        }
+        .clay-btn-inactive:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(180deg, #FFFFFF 0%, #FCE7F3 100%);
+        }
+
+        /* Floating Music Note Animation */
+        @keyframes musicNoteFloat {
+            0% { transform: translateY(0) scale(0.7) rotate(-12deg); opacity: 0; }
+            25% { opacity: 0.95; }
+            75% { opacity: 0.85; }
+            100% { transform: translateY(-55px) translateX(14px) scale(1.15) rotate(16deg); opacity: 0; }
+        }
+        .music-note-float {
+            animation: musicNoteFloat 2.4s ease-out forwards;
+        }
+
+        @keyframes eqBar {
+            0%, 100% { height: 4px; }
+            50% { height: 14px; }
+        }
+        .eq-bar-1 { animation: eqBar 0.55s ease-in-out infinite; }
+        .eq-bar-2 { animation: eqBar 0.4s ease-in-out infinite 0.15s; }
+        .eq-bar-3 { animation: eqBar 0.65s ease-in-out infinite 0.3s; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative selection:bg-pink-200">
+
+    <!-- Confetti Canvas for Mode 3 -->
+    <canvas id="confettiCanvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+
+    <!-- Ambient Floating Music Notes Layer (Active when BGM plays) -->
+    <div id="ambientMusicNotes" class="fixed inset-0 pointer-events-none overflow-hidden z-20"></div>
+
+    <!-- Subtle Floating Decorative Sparkles in Background -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 opacity-70">
+        <div class="absolute top-12 left-[8%] text-2xl animate-pulse">✨</div>
+        <div class="absolute top-28 right-[10%] text-2xl animate-bounce" style="animation-duration:3.5s">🌸</div>
+        <div class="absolute bottom-32 left-[6%] text-2xl animate-bounce" style="animation-duration:4s">💗</div>
+        <div class="absolute bottom-24 right-[8%] text-2xl animate-pulse">✨</div>
+    </div>
+
+    <!-- ================= STICKER HEADER ================= -->
+    <header class="relative z-10 pt-3.5 pb-1 px-4 text-center">
+        <div class="inline-block relative">
+            <div class="header-banner px-5 sm:px-9 py-2.5 rounded-[2rem] inline-flex items-center gap-3 sm:gap-4 relative z-10">
+                <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white shadow-inner flex items-center justify-center text-2xl sm:text-3xl border-2 border-pink-200">
+                    🐷
+                </div>
+                <div class="text-left">
+                    <div class="flex items-center gap-2">
+                        <span class="bg-orange-500 text-white text-[10px] sm:text-xs font-extrabold px-2.5 py-0.5 rounded-full tracking-wider uppercase border border-white/70 shadow-xs">HLE PINK PIG SQUAD</span>
+                        <span class="text-yellow-200 text-xs">★ ★ ★ ★ ★</span>
+                    </div>
+                    <h1 class="font-baloo text-2xl sm:text-4xl font-extrabold text-white tracking-wide drop-shadow-[0_3px_0_rgba(157,23,77,0.85)]">
+                        TRẠI HEO CỦA HLE
+                    </h1>
+                </div>
+                <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-pink-50 shadow-inner flex items-center justify-center text-2xl sm:text-3xl border-2 border-pink-200">
+                    💖
+                </div>
+            </div>
+        </div>
+
+        <!-- Score Badges, Layout Toggle & Audio Control -->
+        <div class="mt-3 flex flex-wrap justify-center items-center gap-2 sm:gap-2.5 text-xs sm:text-sm font-bold">
+            <div class="bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl shadow-sm border-2 border-pink-200 text-pink-600 flex items-center gap-1.5">
+                <span class="text-base">👋</span>
+                <span>Xoa đầu:</span>
+                <span id="patCount" class="font-baloo text-base sm:text-lg text-pink-700">0</span>
+            </div>
+            <div class="bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl shadow-sm border-2 border-rose-200 text-rose-600 flex items-center gap-1.5">
+                <span class="text-base">🥢</span>
+                <span>Đánh đòn:</span>
+                <span id="spankCount" class="font-baloo text-base sm:text-lg text-rose-700">0</span>
+            </div>
+            <div class="bg-white/95 backdrop-blur px-3 py-1.5 rounded-2xl shadow-sm border-2 border-amber-200 text-amber-600 flex items-center gap-1.5">
+                <span class="text-base">💌</span>
+                <span>Lời chúc:</span>
+                <span id="wishCount" class="font-baloo text-base sm:text-lg text-amber-700">0</span>
+            </div>
+            <button id="layoutToggleBtn" onclick="toggleLayout()" class="bg-white hover:bg-pink-50 text-pink-700 px-3.5 py-1.5 rounded-2xl shadow-sm border-2 border-pink-300 transition active:scale-95 flex items-center gap-1.5 cursor-pointer">
+                <span>🖼️</span>
+                <span id="layoutText">Bố cục: Hàng ngang</span>
+            </button>
+            <button id="soundToggleBtn" onclick="toggleSound()" class="bg-gradient-to-b from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white px-3.5 py-1.5 rounded-2xl shadow-sm border-2 border-pink-200 transition active:scale-95 flex items-center gap-1.5 cursor-pointer">
+                <span id="soundIcon">🔊</span>
+                <span id="soundText">Hiệu ứng: Bật</span>
+            </button>
+        </div>
+
+        <!-- Cute Bright BGM Music Player Bar -->
+        <div class="mt-2.5 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 bg-white/95 backdrop-blur-md px-3.5 sm:px-4 py-1.5 rounded-full shadow-[0_6px_18px_rgba(219,39,119,0.15)] border-2 border-pink-300 text-xs sm:text-sm font-bold">
+            <!-- BGM Play/Pause Toggle -->
+            <button id="bgmToggleBtn" onclick="toggleBGM()" class="relative bg-gradient-to-r from-amber-400 via-orange-400 to-pink-500 hover:from-amber-500 hover:to-pink-600 text-white px-3.5 py-1 rounded-full shadow-xs transition active:scale-95 flex items-center gap-2 cursor-pointer">
+                <span id="bgmIcon">🎵</span>
+                <span id="bgmStatusText">Nhạc nền: Bật</span>
+                <!-- Mini Animated Equalizer -->
+                <span id="bgmEq" class="flex items-end gap-0.5 h-3.5 ml-0.5">
+                    <span class="w-1 bg-white rounded-full eq-bar-1"></span>
+                    <span class="w-1 bg-white rounded-full eq-bar-2"></span>
+                    <span class="w-1 bg-white rounded-full eq-bar-3"></span>
+                </span>
+            </button>
+
+            <!-- Melody Selector -->
+            <div class="flex items-center gap-1.5 text-pink-800">
+                <span class="hidden sm:inline text-pink-500">Giai điệu:</span>
+                <select id="bgmTrackSelect" onchange="changeBGMTrack(this.value)" class="bg-pink-50 hover:bg-pink-100 text-pink-800 font-bold px-2.5 py-1 rounded-full border border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-400 cursor-pointer text-xs sm:text-sm">
+                    <option value="sunny">🌼 Nắng Sớm Nông Trại (Tươi sáng)</option>
+                    <option value="candy">🍬 Kẹo Ngọt HLE (Nhí nhảnh)</option>
+                    <option value="lullaby">🌙 Hộp Nhạc Dịu Êm (Nhẹ nhàng)</option>
+                </select>
+            </div>
+
+            <!-- Volume Slider -->
+            <div class="flex items-center gap-1.5 text-pink-700 bg-pink-50/80 px-2.5 py-1 rounded-full border border-pink-200">
+                <span class="text-xs">🔉</span>
+                <input
+                    id="bgmVolumeSlider"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="45"
+                    oninput="updateBGMVolume(this.value)"
+                    class="w-16 sm:w-20 accent-pink-500 cursor-pointer h-1.5 bg-pink-200 rounded-lg"
+                    title="Âm lượng nhạc nền"
+                />
+            </div>
+        </div>
+    </header>
+
+    <!-- Mode Dynamic Guide Pill -->
+    <div class="relative z-10 text-center my-1.5 px-4">
+        <div id="modeInstruction" class="inline-flex items-center gap-2 bg-white/95 backdrop-blur border-2 border-pink-300 text-pink-800 px-5 py-1.5 rounded-full font-bold text-xs sm:text-sm shadow-sm">
+            <span>👋</span>
+            <span>Chế độ Xoa Đầu: Nhấp hoặc rê chuột lên đầu từng bé heo để cưng nựng (Kêu Ụt ịt~)</span>
+        </div>
+    </div>
+
+    <!-- ================= MAIN STAGE (5 CHIBI STICKER PIGS) ================= -->
+    <main class="relative z-10 flex-1 flex flex-col justify-center items-center px-3 py-1 max-w-7xl mx-auto w-full">
+
+        <!-- Pastel Sticker Board Container -->
+        <div class="w-full max-w-6xl relative pt-6 pb-5 px-3 sm:px-6 rounded-[2.6rem] bg-white/45 backdrop-blur-md border-4 border-white shadow-[0_18px_45px_rgba(219,39,119,0.16)]">
+            <!-- 5 Chibi Sticker Pigs Container -->
+            <div id="pigsContainer" class="w-full relative z-10">
+                <!-- Rendered via JS -->
+            </div>
+        </div>
+
+        <!-- ================= MODE 3: LOVE LETTER WISH CARD ================= -->
+        <div id="wishBoxContainer" class="hidden w-full max-w-2xl mt-4 transition-all duration-300">
+            <div class="clay-panel rounded-[2rem] p-4 sm:p-5 relative overflow-hidden">
+                <div class="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br from-pink-400 to-rose-500 rounded-bl-3xl flex items-center justify-center text-white text-xl shadow-md">
+                    💌
+                </div>
+
+                <div class="flex items-center gap-2 mb-2.5">
+                    <span class="bg-pink-100 text-pink-600 p-1.5 rounded-xl text-lg">✨</span>
+                    <label for="wishInput" class="font-baloo text-pink-900 font-extrabold text-base sm:text-lg">
+                        Gửi Lời Chúc Tới Gumayusi (#98), Zeus (#10), Kanavi (#1), Zeka (#7), Delight (#25)
+                    </label>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-2.5">
+                    <input
+                        id="wishInput"
+                        type="text"
+                        placeholder="Nhập lời nhắn cho 5 bé heo (VD: Chúc 5 bé heo giành chiến thắng nhé!)"
+                        class="flex-1 px-4 py-3 rounded-2xl border-2 border-pink-200 focus:border-pink-500 focus:ring-4 focus:ring-pink-100 focus:outline-none text-gray-700 font-bold text-sm sm:text-base bg-pink-50/60 shadow-inner"
+                        onkeydown="if(event.key === 'Enter') sendWish()"
+                    />
+                    <button
+                        onclick="sendWish()"
+                        class="clay-btn clay-btn-pat-active font-baloo font-extrabold px-6 py-3 rounded-2xl text-base sm:text-lg flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer"
+                    >
+                        <span>Gửi Lời Chúc</span>
+                        <span>💖</span>
+                    </button>
+                </div>
+
+                <!-- Quick Suggestion Chips -->
+                <div class="mt-3 flex flex-wrap gap-2 items-center">
+                    <span class="text-xs font-extrabold text-pink-500 uppercase tracking-wider">Chọn nhanh:</span>
+                    <button onclick="quickWish('Cảm ơn những phép mầu của bọn tớ')" class="text-xs bg-amber-100/90 hover:bg-amber-200 text-amber-900 border border-amber-300 font-bold px-3 py-1.5 rounded-full transition hover:scale-105 cursor-pointer">
+                        ✨ Cảm ơn những phép mầu của bọn tớ
+                    </button>
+                    <button onclick="quickWish('Chúng tớ yêu các cậu nhiều lắm!')" class="text-xs bg-pink-100/90 hover:bg-pink-200 text-pink-800 border border-pink-300 font-bold px-3 py-1.5 rounded-full transition hover:scale-105 cursor-pointer">
+                        💖 Chúng tớ yêu các cậu
+                    </button>
+                    <button onclick="quickWish('Cố lên HLE, chúng ta sẽ dành chiến thắng nhé!')" class="text-xs bg-orange-100/90 hover:bg-orange-200 text-orange-900 border border-orange-300 font-bold px-3 py-1.5 rounded-full transition hover:scale-105 cursor-pointer">
+                        🏆 Chúng ta sẽ dành chiến thắng nhé
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ================= 3D CLAYMORPHISM MODE DOCK ================= -->
+    <footer class="relative z-20 pb-4 pt-2 px-4">
+        <div class="max-w-2xl mx-auto clay-panel p-2.5 sm:p-3 rounded-[2.2rem] grid grid-cols-3 gap-2.5 sm:gap-4">
+            <!-- Mode 1: Spank -->
+            <button
+                id="btnModeSpank"
+                onclick="setMode('spank')"
+                class="clay-btn flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2.5 sm:py-3 px-2 sm:px-4 rounded-2xl font-bold cursor-pointer"
+            >
+                <span class="text-2xl sm:text-3xl drop-shadow">🥢</span>
+                <div class="text-center sm:text-left">
+                    <div class="font-baloo text-sm sm:text-base font-extrabold leading-tight">Lấy Roi Đánh</div>
+                    <div class="text-[11px] opacity-85 font-semibold hidden sm:block">Lật úp mông & kêu ÉC!</div>
+                </div>
+            </button>
+
+            <!-- Mode 2: Pat Head -->
+            <button
+                id="btnModePat"
+                onclick="setMode('pat')"
+                class="clay-btn flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2.5 sm:py-3 px-2 sm:px-4 rounded-2xl font-bold cursor-pointer"
+            >
+                <span class="text-2xl sm:text-3xl drop-shadow">👋</span>
+                <div class="text-center sm:text-left">
+                    <div class="font-baloo text-sm sm:text-base font-extrabold leading-tight">Xoa Đầu</div>
+                    <div class="text-[11px] opacity-85 font-semibold hidden sm:block">Cười tít mắt Ụt ịt~</div>
+                </div>
+            </button>
+
+            <!-- Mode 3: Send Wishes -->
+            <button
+                id="btnModeWish"
+                onclick="setMode('wish')"
+                class="clay-btn flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2.5 sm:py-3 px-2 sm:px-4 rounded-2xl font-bold cursor-pointer"
+            >
+                <span class="text-2xl sm:text-3xl drop-shadow">💌</span>
+                <div class="text-center sm:text-left">
+                    <div class="font-baloo text-sm sm:text-base font-extrabold leading-tight">Gửi Lời Chúc</div>
+                    <div class="text-[11px] opacity-85 font-semibold hidden sm:block">Pháo giấy & đáp lời</div>
+                </div>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        // 1. DATA: 5 CHIBI STICKER PIGS OF HLE (MATCHING REFERENCE ART)
+        // ============================================================
+        const pigsData = [
+            {
+                id: 'pig-98',
+                number: '98',
+                name: 'Gumayusi',
+                badge: '🥐 Bánh sừng bò • Kính tròn ngầu',
+                iconEmoji: '🥐',
+                variant: 'gumayusi',
+                pos: 'top-left',
+                delay: '0s'
+            },
+            {
+                id: 'pig-10',
+                number: '10',
+                name: 'Zeus',
+                badge: '⚡ Tia sét • Kính gọng vàng nháy mắt',
+                iconEmoji: '⚡',
+                variant: 'zeus',
+                pos: 'top-right',
+                delay: '0.25s'
+            },
+            {
+                id: 'pig-1',
+                number: '1',
+                name: 'Kanavi',
+                badge: '🦋 Bướm tím • Mắt long lanh ở giữa',
+                iconEmoji: '🦋',
+                variant: 'kanavi',
+                pos: 'center',
+                delay: '0.5s'
+            },
+            {
+                id: 'pig-7',
+                number: '7',
+                name: 'Zeka',
+                badge: '🐟 Cá hồng • Nốt ruồi dưới mắt',
+                iconEmoji: '🐟',
+                variant: 'zeka',
+                pos: 'bottom-left',
+                delay: '0.15s'
+            },
+            {
+                id: 'pig-25',
+                number: '25',
+                name: 'Delight',
+                badge: '✨ Ngôi sao lấp lánh • Kính nửa gọng',
+                iconEmoji: '✨',
+                variant: 'delight',
+                pos: 'bottom-right',
+                delay: '0.4s'
+            }
+        ];
+
+        let currentMode = 'pat'; // 'spank' | 'pat' | 'wish'
+        let layoutMode = 'row';  // 'row' (5 in a row) | 'sticker' (2-1-2 formation like image)
+        let soundEnabled = true;
+        let counts = { pat: 0, spank: 0, wish: 0 };
+        let audioCtx = null;
+        let lastPatTime = 0;
+
+        // ============================================================
+        // 2. WEB AUDIO API: SYNTHESIZED CUTE PIG VOICES & FX
+        // ============================================================
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContextClass();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundIcon').textContent = soundEnabled ? '🔊' : '🔇';
+            document.getElementById('soundText').textContent = soundEnabled ? 'Hiệu ứng: Bật' : 'Hiệu ứng: Tắt';
+        }
+
+        // ============================================================
+        // 2B. PROCEDURAL BRIGHT & GENTLE BACKGROUND MUSIC SYNTHESIZER
+        // ============================================================
+        let bgmEnabled = true;
+        let bgmIsPlaying = false;
+        let bgmCurrentTrack = 'sunny'; // 'sunny' | 'candy' | 'lullaby'
+        let bgmVolume = 0.45;
+        let bgmStepIndex = 0;
+        let bgmTimerId = null;
+        let bgmNoteSpawnerId = null;
+        let bgmMasterGain = null;
+
+        // Note frequency table (Hz)
+        const NOTE_FREQ = {
+            'C3': 130.81, 'D3': 146.83, 'E3': 164.81, 'F3': 174.61, 'G3': 196.00, 'A3': 220.00, 'B3': 246.94,
+            'C4': 261.63, 'D4': 293.66, 'E4': 329.63, 'F4': 349.23, 'G4': 392.00, 'A4': 440.00, 'B4': 493.88,
+            'C5': 523.25, 'D5': 587.33, 'E5': 659.25, 'F5': 698.46, 'G5': 783.99, 'A5': 880.00, 'B5': 987.77,
+            'C6': 1046.50, 'D6': 1174.66, 'E6': 1318.51
+        };
+
+        // 3 Cheerful, Lighthearted Pastel Melodies (32 eighth-note steps per loop)
+        const BGM_TRACKS = {
+            // 1. "Nắng Sớm Nông Trại": Bright cozy Marimba + Ukulele pluck (C - G - Am - F)
+            sunny: {
+                tempoMs: 215,
+                leadWave: 'sine',
+                subWave: 'triangle',
+                melody: [
+                    'E5', 'G5', 'C6', null, 'B5', 'G5', 'E5', 'G5',
+                    'D5', 'G5', 'B5', null, 'A5', 'G5', 'D5', null,
+                    'C5', 'E5', 'A5', null, 'G5', 'E5', 'C5', 'D5',
+                    'F5', 'A5', 'C6', 'A5', 'G5', null, 'D5', 'G5'
+                ],
+                bass: [
+                    'C3', null, 'G3', null, 'E3', null, 'G3', null,
+                    'G3', null, 'D3', null, 'B3', null, 'D3', null,
+                    'A3', null, 'E3', null, 'C4', null, 'E3', null,
+                    'F3', null, 'C4', null, 'G3', null, 'B3', null
+                ],
+                chords: {
+                    0: ['C4', 'E4', 'G4'],
+                    8: ['G3', 'B3', 'D4'],
+                    16: ['A3', 'C4', 'E4'],
+                    24: ['F3', 'A3', 'C4'],
+                    28: ['G3', 'B3', 'D4']
+                }
+            },
+            // 2. "Kẹo Ngọt HLE": Bouncy cute toy-piano / kalimba melody (F - G - Em - Am)
+            candy: {
+                tempoMs: 185,
+                leadWave: 'triangle',
+                subWave: 'sine',
+                melody: [
+                    'A5', 'C6', 'A5', 'F5', 'D6', 'C6', null, 'A5',
+                    'B5', 'D6', 'B5', 'G5', 'E6', 'D6', null, 'B5',
+                    'G5', 'B5', 'E6', null, 'D6', 'B5', 'G5', null,
+                    'A5', 'C6', 'E6', 'C6', 'D6', null, 'B5', 'G5'
+                ],
+                bass: [
+                    'F3', null, 'C4', null, 'F3', null, 'C4', null,
+                    'G3', null, 'D4', null, 'G3', null, 'D4', null,
+                    'E3', null, 'B3', null, 'E3', null, 'B3', null,
+                    'A3', null, 'E4', null, 'G3', null, 'D4', null
+                ],
+                chords: {
+                    0: ['F4', 'A4', 'C5'],
+                    8: ['G4', 'B4', 'D5'],
+                    16: ['E4', 'G4', 'B4'],
+                    24: ['A3', 'C4', 'E4']
+                }
+            },
+            // 3. "Hộp Nhạc Dịu Êm": Gentle celesta music box lullaby
+            lullaby: {
+                tempoMs: 265,
+                leadWave: 'sine',
+                subWave: 'sine',
+                melody: [
+                    'G5', null, 'E5', 'C5', 'A5', null, 'G5', null,
+                    'F5', 'E5', 'D5', null, 'G5', null, 'E5', null,
+                    'E5', 'G5', 'C6', null, 'B5', 'A5', 'G5', null,
+                    'F5', 'A5', 'G5', 'E5', 'D5', null, 'C5', null
+                ],
+                bass: [
+                    'C4', 'G4', 'E4', 'G4', 'F3', 'C4', 'A3', 'C4',
+                    'D3', 'A3', 'F3', 'A3', 'G3', 'D4', 'B3', 'D4',
+                    'C4', 'G4', 'E4', 'G4', 'A3', 'E4', 'C4', 'E4',
+                    'F3', 'C4', 'G3', 'B3', 'C3', 'G3', 'C4', null
+                ],
+                chords: {
+                    0: ['C4', 'E4', 'G4'],
+                    16: ['A3', 'C4', 'E4'],
+                    24: ['F3', 'A3', 'C4']
+                }
+            }
+        };
+
+        function ensureBGMMaster() {
+            const ctx = getAudioContext();
+            if (!bgmMasterGain) {
+                bgmMasterGain = ctx.createGain();
+                bgmMasterGain.gain.setValueAtTime(bgmVolume * 0.35, ctx.currentTime);
+                bgmMasterGain.connect(ctx.destination);
+            }
+            return ctx;
+        }
+
+        function playPluckNote(freq, duration, waveType = 'sine', gainScale = 0.22, addSparkleHarmonic = false) {
+            if (!bgmEnabled || !freq) return;
+            try {
+                const ctx = ensureBGMMaster();
+                const now = ctx.currentTime;
+
+                const osc = ctx.createOscillator();
+                const noteGain = ctx.createGain();
+
+                osc.type = waveType;
+                osc.frequency.setValueAtTime(freq, now);
+
+                // Soft music-box / marimba envelope
+                noteGain.gain.setValueAtTime(0.001, now);
+                noteGain.gain.linearRampToValueAtTime(gainScale, now + 0.018);
+                noteGain.gain.exponentialRampToValueAtTime(0.0008, now + duration);
+
+                osc.connect(noteGain);
+                noteGain.connect(bgmMasterGain);
+
+                osc.start(now);
+                osc.stop(now + duration + 0.02);
+
+                // Optional soft octave overtone for bright celesta / music-box shimmer
+                if (addSparkleHarmonic) {
+                    const overOsc = ctx.createOscillator();
+                    const overGain = ctx.createGain();
+                    overOsc.type = 'sine';
+                    overOsc.frequency.setValueAtTime(freq * 2, now);
+
+                    overGain.gain.setValueAtTime(0.001, now);
+                    overGain.gain.linearRampToValueAtTime(gainScale * 0.28, now + 0.012);
+                    overGain.gain.exponentialRampToValueAtTime(0.0008, now + duration * 0.65);
+
+                    overOsc.connect(overGain);
+                    overGain.connect(bgmMasterGain);
+
+                    overOsc.start(now);
+                    overOsc.stop(now + duration * 0.7);
+                }
+            } catch (e) {
+                console.warn(e);
+            }
+        }
+
+        function stepBGMSequencer() {
+            if (!bgmEnabled) return;
+            const track = BGM_TRACKS[bgmCurrentTrack];
+            const step = bgmStepIndex % 32;
+
+            // 1. Lead Bright Melody Note
+            const leadNote = track.melody[step];
+            if (leadNote && NOTE_FREQ[leadNote]) {
+                playPluckNote(NOTE_FREQ[leadNote], 0.42, track.leadWave, 0.26, true);
+            }
+
+            // 2. Warm Ukulele / Bass Accompaniment
+            const bassNote = track.bass[step];
+            if (bassNote && NOTE_FREQ[bassNote]) {
+                playPluckNote(NOTE_FREQ[bassNote], 0.36, track.subWave, 0.14, false);
+            }
+
+            // 3. Soft Warm Pad Chord on Measure Starts
+            if (track.chords && track.chords[step]) {
+                track.chords[step].forEach((cNote, idx) => {
+                    if (NOTE_FREQ[cNote]) {
+                        setTimeout(() => {
+                            playPluckNote(NOTE_FREQ[cNote], 0.95, 'sine', 0.065, false);
+                        }, idx * 28);
+                    }
+                });
+            }
+
+            bgmStepIndex = (bgmStepIndex + 1) % 32;
+        }
+
+        function spawnAmbientMusicNote() {
+            if (!bgmEnabled || !bgmIsPlaying) return;
+            const layer = document.getElementById('ambientMusicNotes');
+            if (!layer) return;
+
+            const symbols = ['♪', '♫', '♬', '🎵', '✨'];
+            const colors = ['text-pink-500', 'text-amber-500', 'text-rose-500', 'text-purple-500'];
+            const noteEl = document.createElement('div');
+            noteEl.className = `music-note-float fixed pointer-events-none font-bold text-lg sm:text-xl drop-shadow-xs ${colors[Math.floor(Math.random() * colors.length)]}`;
+            noteEl.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+            // Spawn gently around the stage
+            const randomLeft = 12 + Math.random() * 76;
+            const randomTop = 28 + Math.random() * 48;
+            noteEl.style.left = `${randomLeft}%`;
+            noteEl.style.top = `${randomTop}%`;
+
+            layer.appendChild(noteEl);
+            setTimeout(() => noteEl.remove(), 2400);
+        }
+
+        function startBGM() {
+            if (!bgmEnabled) return;
+            ensureBGMMaster();
+            stopBGMTimers();
+
+            bgmIsPlaying = true;
+            const track = BGM_TRACKS[bgmCurrentTrack];
+            stepBGMSequencer();
+            bgmTimerId = setInterval(stepBGMSequencer, track.tempoMs);
+            bgmNoteSpawnerId = setInterval(spawnAmbientMusicNote, 1100);
+            updateBGMUI();
+        }
+
+        function stopBGMTimers() {
+            if (bgmTimerId) {
+                clearInterval(bgmTimerId);
+                bgmTimerId = null;
+            }
+            if (bgmNoteSpawnerId) {
+                clearInterval(bgmNoteSpawnerId);
+                bgmNoteSpawnerId = null;
+            }
+            bgmIsPlaying = false;
+        }
+
+        function toggleBGM() {
+            bgmEnabled = !bgmEnabled;
+            if (bgmEnabled) {
+                startBGM();
+            } else {
+                stopBGMTimers();
+                updateBGMUI();
+            }
+        }
+
+        function changeBGMTrack(trackKey) {
+            bgmCurrentTrack = trackKey;
+            bgmStepIndex = 0;
+            if (!bgmEnabled) {
+                bgmEnabled = true;
+            }
+            startBGM();
+        }
+
+        function updateBGMVolume(val) {
+            bgmVolume = Number(val) / 100;
+            if (bgmMasterGain && audioCtx) {
+                bgmMasterGain.gain.setTargetAtTime(bgmVolume * 0.35, audioCtx.currentTime, 0.05);
+            }
+            if (bgmVolume > 0 && !bgmEnabled) {
+                bgmEnabled = true;
+                startBGM();
+            }
+        }
+
+        function updateBGMUI() {
+            const iconEl = document.getElementById('bgmIcon');
+            const textEl = document.getElementById('bgmStatusText');
+            const eqEl = document.getElementById('bgmEq');
+            const btnEl = document.getElementById('bgmToggleBtn');
+
+            if (bgmEnabled) {
+                iconEl.textContent = '🎵';
+                textEl.textContent = 'Nhạc nền: Bật';
+                eqEl.classList.remove('hidden');
+                eqEl.classList.add('flex');
+                btnEl.className = 'relative bg-gradient-to-r from-amber-400 via-orange-400 to-pink-500 hover:from-amber-500 hover:to-pink-600 text-white px-3.5 py-1 rounded-full shadow-xs transition active:scale-95 flex items-center gap-2 cursor-pointer';
+            } else {
+                iconEl.textContent = '🔇';
+                textEl.textContent = 'Nhạc nền: Tắt';
+                eqEl.classList.add('hidden');
+                eqEl.classList.remove('flex');
+                btnEl.className = 'relative bg-gray-200 hover:bg-gray-300 text-gray-700 px-3.5 py-1 rounded-full shadow-xs transition active:scale-95 flex items-center gap-2 cursor-pointer';
+            }
+        }
+
+        // Auto-unlock Web Audio API on first user gesture anywhere on page
+        function unlockAudioOnFirstGesture() {
+            const ctx = getAudioContext();
+            if (bgmEnabled && !bgmIsPlaying) {
+                startBGM();
+            } else if (ctx.state === 'suspended') {
+                ctx.resume();
+            }
+        }
+        window.addEventListener('pointerdown', unlockAudioOnFirstGesture, { once: true });
+        window.addEventListener('keydown', unlockAudioOnFirstGesture, { once: true });
+
+        function toggleLayout() {
+            layoutMode = layoutMode === 'row' ? 'sticker' : 'row';
+            document.getElementById('layoutText').textContent =
+                layoutMode === 'sticker' ? 'Bố cục: Theo ảnh mẫu (2-1-2)' : 'Bố cục: Hàng ngang (5 heo)';
+            renderPigs(true);
+        }
+
+        // Comic whip "Bốp!" + High-pitched Pig Squeal "ÉC!"
+        function playSquealSound() {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime;
+
+                const slapOsc = ctx.createOscillator();
+                const slapGain = ctx.createGain();
+                slapOsc.type = 'triangle';
+                slapOsc.frequency.setValueAtTime(240, now);
+                slapOsc.frequency.exponentialRampToValueAtTime(48, now + 0.085);
+                slapGain.gain.setValueAtTime(0.45, now);
+                slapGain.gain.exponentialRampToValueAtTime(0.01, now + 0.085);
+                slapOsc.connect(slapGain);
+                slapGain.connect(ctx.destination);
+                slapOsc.start(now);
+                slapOsc.stop(now + 0.09);
+
+                const squealOsc = ctx.createOscillator();
+                const squealGain = ctx.createGain();
+                const filter = ctx.createBiquadFilter();
+
+                squealOsc.type = 'sawtooth';
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(1350, now + 0.04);
+                filter.Q.setValueAtTime(2.2, now + 0.04);
+
+                squealOsc.frequency.setValueAtTime(620, now + 0.04);
+                squealOsc.frequency.exponentialRampToValueAtTime(1480, now + 0.16);
+                squealOsc.frequency.exponentialRampToValueAtTime(1020, now + 0.34);
+
+                squealGain.gain.setValueAtTime(0.01, now + 0.04);
+                squealGain.gain.linearRampToValueAtTime(0.32, now + 0.09);
+                squealGain.gain.exponentialRampToValueAtTime(0.008, now + 0.36);
+
+                squealOsc.connect(filter);
+                filter.connect(squealGain);
+                squealGain.connect(ctx.destination);
+
+                squealOsc.start(now + 0.04);
+                squealOsc.stop(now + 0.37);
+            } catch (e) {
+                console.warn(e);
+            }
+        }
+
+        // Cute double grunt "Ụt ịt~"
+        function playOinkSound() {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime;
+
+                [0, 0.17].forEach((offset, idx) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    const filter = ctx.createBiquadFilter();
+
+                    osc.type = 'sawtooth';
+                    const baseFreq = idx === 0 ? 150 : 190;
+                    osc.frequency.setValueAtTime(baseFreq, now + offset);
+                    osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.38, now + offset + 0.07);
+                    osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.88, now + offset + 0.14);
+
+                    filter.type = 'lowpass';
+                    filter.frequency.setValueAtTime(560, now + offset);
+
+                    gain.gain.setValueAtTime(0.01, now + offset);
+                    gain.gain.linearRampToValueAtTime(0.28, now + offset + 0.03);
+                    gain.gain.exponentialRampToValueAtTime(0.008, now + offset + 0.15);
+
+                    osc.connect(filter);
+                    filter.connect(gain);
+                    gain.connect(ctx.destination);
+
+                    osc.start(now + offset);
+                    osc.stop(now + offset + 0.16);
+                });
+            } catch (e) {
+                console.warn(e);
+            }
+        }
+
+        // Magical Fanfare Chime for Wishes
+        function playCheerSound() {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime;
+                const notes = [523.25, 659.25, 783.99, 1046.5, 1318.5];
+
+                notes.forEach((freq, i) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(freq, now + i * 0.075);
+
+                    gain.gain.setValueAtTime(0.22, now + i * 0.075);
+                    gain.gain.exponentialRampToValueAtTime(0.008, now + i * 0.075 + 0.38);
+
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(now + i * 0.075);
+                    osc.stop(now + i * 0.075 + 0.4);
+                });
+            } catch (e) {
+                console.warn(e);
+            }
+        }
+
+        // ============================================================
+        // 3. EXACT KAWAII STICKER SVG GENERATOR (MATCHING REFERENCE IMAGE)
+        // ============================================================
+        function getTummyBadgeIconSVG(variant) {
+            if (variant === 'gumayusi') {
+                // Golden Croissant (#98 Gumayusi)
+                return `
+                <g transform="translate(110, 179)">
+                    <path d="M -16 5 C -19 -6, -9 -13, 0 -13 C 9 -13, 19 -6, 16 5 C 12 8, 8 2, 0 2 C -8 2, -12 8, -16 5 Z" fill="#FBBF24" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M -7 -11 Q -10 -2 -6 3 M 7 -11 Q 10 -2 6 3" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round"/>
+                </g>`;
+            }
+            if (variant === 'zeus') {
+                // Yellow Lightning Bolt (#10 Zeus)
+                return `
+                <g transform="translate(110, 179)">
+                    <polygon points="3,-15 -9,1 0,1 -4,15 10,-2 1,-2" fill="#FACC15" stroke="#EAB308" stroke-width="1.5" stroke-linejoin="round"/>
+                </g>`;
+            }
+            if (variant === 'kanavi') {
+                // Pastel Purple Butterfly (#1 Kanavi)
+                return `
+                <g transform="translate(110, 179)">
+                    <path d="M 0 -3 C -8 -15, -17 -9, -12 0 C -16 8, -7 14, 0 5 C 7 14, 16 8, 12 0 C 17 -9, 8 -15, 0 -3 Z" fill="#D8B4FE" stroke="#C084FC" stroke-width="1.5" stroke-linejoin="round"/>
+                    <line x1="0" y1="-6" x2="0" y2="7" stroke="#9333EA" stroke-width="2" stroke-linecap="round"/>
+                </g>`;
+            }
+            if (variant === 'zeka') {
+                // Cute Pastel Pink Fish (#7 Zeka)
+                return `
+                <g transform="translate(110, 179)">
+                    <ellipse cx="-3" cy="0" rx="11" ry="8" fill="#F9A8D4"/>
+                    <polygon points="6,0 15,-7 15,7" fill="#F9A8D4" stroke="#F9A8D4" stroke-width="2" stroke-linejoin="round"/>
+                    <circle cx="-7" cy="-2" r="1.5" fill="#FFFFFF"/>
+                </g>`;
+            }
+            if (variant === 'delight') {
+                // Two Yellow 4-Point Sparkle Stars (#25 Delight)
+                return `
+                <g transform="translate(110, 179)">
+                    <path d="M -5 -14 Q -5 -4 -14 -4 Q -5 -4 -5 6 Q -5 -4 4 -4 Q -5 -4 -5 -14 Z" fill="#FDE047"/>
+                    <path d="M 8 -1 Q 8 5 2 5 Q 8 5 8 11 Q 8 5 14 5 Q 8 5 8 -1 Z" fill="#FACC15"/>
+                </g>`;
+            }
+            return '';
+        }
+
+        function getFaceDetailsSVG(variant) {
+            const eyeColor = "#59253A";
+
+            // Helper for the cute round dark-maroon eye with white highlight + pink bottom shine
+            const renderCuteEye = (cx, cy) => `
+                <ellipse cx="${cx}" cy="${cy}" rx="9.5" ry="10.8" fill="${eyeColor}"/>
+                <circle cx="${cx - 3}" cy="${cy - 3.5}" r="3.6" fill="#FFFFFF"/>
+                <ellipse cx="${cx + 2}" cy="${cy + 4.5}" rx="4.2" ry="2.8" fill="#F472B6"/>
+            `;
+
+            if (variant === 'zeus') {
+                // ZEUS (#10): Left normal cute eye, right winking eye (<), yellow square-rounded glasses, beauty dot on right
+                return `
+                <!-- Eyebrows -->
+                <path d="M 74 79 Q 84 74 91 79" fill="none" stroke="${eyeColor}" stroke-width="3.2" stroke-linecap="round"/>
+                <path d="M 129 79 Q 136 74 146 79" fill="none" stroke="${eyeColor}" stroke-width="3.2" stroke-linecap="round"/>
+
+                <!-- Normal Blinking Eyes (Left open, Right wink '<') -->
+                <g class="normal-eyes pig-eyes-blink transition-opacity duration-200">
+                    ${renderCuteEye(83, 98)}
+                    <!-- Right Wink '<' -->
+                    <path d="M 145 91 L 128 98 L 145 104" fill="none" stroke="${eyeColor}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+
+                <!-- Happy Eyes when patted -->
+                <g class="happy-eyes opacity-0 transition-opacity duration-200">
+                    <path d="M 73 99 Q 83 87 93 99" fill="none" stroke="${eyeColor}" stroke-width="4.2" stroke-linecap="round"/>
+                    <path d="M 145 91 L 128 98 L 145 104" fill="none" stroke="${eyeColor}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+
+                <!-- Yellow Rounded-Rectangle Glasses & Beauty Dot -->
+                <rect x="60" y="76" width="45" height="39" rx="14" fill="none" stroke="#FACC15" stroke-width="4.2"/>
+                <rect x="115" y="76" width="45" height="39" rx="14" fill="none" stroke="#FACC15" stroke-width="4.2"/>
+                <path d="M 105 93 Q 110 89 115 93" fill="none" stroke="#FACC15" stroke-width="4.2" stroke-linecap="round"/>
+                <!-- Tiny mole inside right frame bottom-right -->
+                <circle cx="151" cy="108" r="2.1" fill="${eyeColor}"/>
+                `;
+            }
+
+            if (variant === 'gumayusi') {
+                // GUMAYUSI (#98): Angled fierce eyebrows, dark-brown round under-rim glasses with H-bridge
+                return `
+                <!-- Fierce Angled Eyebrows -->
+                <path d="M 76 77 L 91 84" fill="none" stroke="${eyeColor}" stroke-width="4" stroke-linecap="round"/>
+                <path d="M 144 77 L 129 84" fill="none" stroke="${eyeColor}" stroke-width="4" stroke-linecap="round"/>
+
+                <!-- Normal Eyes -->
+                <g class="normal-eyes pig-eyes-blink transition-opacity duration-200">
+                    ${renderCuteEye(83, 98)}
+                    <path d="M 69 92 Q 83 89 96 93" fill="none" stroke="${eyeColor}" stroke-width="3.5" stroke-linecap="round"/>
+                    ${renderCuteEye(137, 98)}
+                    <path d="M 124 93 Q 137 89 151 92" fill="none" stroke="${eyeColor}" stroke-width="3.5" stroke-linecap="round"/>
+                </g>
+
+                <!-- Happy Eyes when patted -->
+                <g class="happy-eyes opacity-0 transition-opacity duration-200">
+                    <path d="M 73 99 Q 83 87 93 99" fill="none" stroke="${eyeColor}" stroke-width="4.2" stroke-linecap="round"/>
+                    <path d="M 127 99 Q 137 87 147 99" fill="none" stroke="${eyeColor}" stroke-width="4.2" stroke-linecap="round"/>
+                </g>
+
+                <!-- Dark Under-Rim Round Glasses + Center Bridge -->
+                <path d="M 61 89 C 56 108, 72 118, 91 114 C 99 112, 103 104, 104 90" fill="none" stroke="${eyeColor}" stroke-width="3.4" stroke-linecap="round"/>
+                <path d="M 159 89 C 164 108, 148 118, 129 114 C 121 112, 117 104, 116 90" fill="none" stroke="${eyeColor}" stroke-width="3.4" stroke-linecap="round"/>
+                <path d="M 104 97 L 116 97" fill="none" stroke="${eyeColor}" stroke-width="3.2" stroke-linecap="round"/>
+                `;
+            }
+
+            if (variant === 'delight') {
+                // DELIGHT (#25): Relaxed/gentle eyebrows, dark-brown round under-rim glasses with H-bridge
+                return `
+                <!-- Gentle Small Eyebrows -->
+                <path d="M 86 82 L 94 79" fill="none" stroke="${eyeColor}" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M 134 82 L 126 79" fill="none" stroke="${eyeColor}" stroke-width="3.5" stroke-linecap="round"/>
+
+                <!-- Normal Eyes -->
+                <g class="normal-eyes pig-eyes-blink transition-opacity duration-200">
+                    ${renderCuteEye(83, 98)}
+                    <path d="M 69 92 Q 83 90 96 93" fill="none" stroke="${eyeColor}" stroke-width="3.5" stroke-linecap="round"/>
+                    ${renderCuteEye(137, 98)}
+                    <path d="M 124 93 Q 137 90 151 92" fill="none" stroke="${eyeColor}" stroke-width="3.5" stroke-linecap="round"/>
+                </g>
+
+                <!-- Happy Eyes when patted -->
+                <g class="happy-eyes opacity-0 transition-opacity duration-200">
+                    <path d="M 73 99 Q 83 87 93 99" fill="none" stroke="${eyeColor}" stroke-width="4.2" stroke-linecap="round"/>
+                    <path d="M 127 99 Q 137 87 147 99" fill="none" stroke="${eyeColor}" stroke-width="4.2" stroke-linecap="round"/>
+                </g>
+
+                <!-- Dark Under-Rim Round Glasses + Center Bridge -->
+                <path d="M 61 89 C 56 108, 72 118, 91 114 C 99 112, 103 104, 104 90" fill="none" stroke="${eyeColor}" stroke-width="3.4" stroke-linecap="round"/>
+                <path d="M 159 89 C 164 108, 148 118, 129 114 C 121 112, 117 104, 116 90" fill="none" stroke="${eyeColor}" stroke-width="3.4" stroke-linecap="round"/>
+                <path d="M 104 97 L 116 97" fill="none" stroke="${eyeColor}" stroke-width="3.2" stroke-linecap="round"/>
+                `;
+            }
+
+            if (variant === 'kanavi') {
+                // KANAVI (#1): Flat short eyebrows, big gentle eyes with pink outer eyelashes
+                return `
+                <!-- Flat Cute Eyebrows -->
+                <line x1="78" y1="80" x2="87" y2="80" stroke="${eyeColor}" stroke-width="3.6" stroke-linecap="round"/>
+                <line x1="133" y1="80" x2="142" y2="80" stroke="${eyeColor}" stroke-width="3.6" stroke-linecap="round"/>
+
+                <!-- Normal Eyes with Pink Outer Lashes -->
+                <g class="normal-eyes pig-eyes-blink transition-opacity duration-200">
+                    <path d="M 66 95 L 74 91" stroke="#EC4899" stroke-width="3.8" stroke-linecap="round"/>
+                    <path d="M 154 95 L 146 91" stroke="#EC4899" stroke-width="3.8" stroke-linecap="round"/>
+                    ${renderCuteEye(83, 98)}
+                    <path d="M 71 91 Q 83 89 95 92" fill="none" stroke="${eyeColor}" stroke-width="3.6" stroke-linecap="round"/>
+                    ${renderCuteEye(137, 98)}
+                    <path d="M 125 92 Q 137 89 149 91" fill="none" stroke="${eyeColor}" stroke-width="3.6" stroke-linecap="round"/>
+                </g>
+
+                <!-- Happy Eyes when patted -->
+                <g class="happy-eyes opacity-0 transition-opacity duration-200">
+                    <path d="M 73 99 Q 83 87 93 99" fill="none" stroke="${eyeColor}" stroke-width="4.2" stroke-linecap="round"/>
+                    <path d="M 127 99 Q 137 87 147 99" fill="none" stroke="${eyeColor}" stroke-width="4.2" stroke-linecap="round"/>
+                </g>
+                `;
+            }
+
+            if (variant === 'zeka') {
+                // ZEKA (#7): Small oval eyebrows, pink outer lashes, beauty mole under right eye
+                return `
+                <!-- Small Oval Eyebrows -->
+                <line x1="79" y1="80" x2="86" y2="80" stroke="${eyeColor}" stroke-width="3.6" stroke-linecap="round"/>
+                <line x1="134" y1="80" x2="141" y2="80" stroke="${eyeColor}" stroke-width="3.6" stroke-linecap="round"/>
+
+                <!-- Normal Eyes with Pink Outer Lashes -->
+                <g class="normal-eyes pig-eyes-blink transition-opacity duration-200">
+                    <path d="M 66 94 L 74 91" stroke="#EC4899" stroke-width="3.8" stroke-linecap="round"/>
+                    <path d="M 154 94 L 146 91" stroke="#EC4899" stroke-width="3.8" stroke-linecap="round"/>
+                    ${renderCuteEye(83, 98)}
+                    <path d="M 71 91 Q 83 89 95 92" fill="none" stroke="${eyeColor}" stroke-width="3.6" stroke-linecap="round"/>
+                    ${renderCuteEye(137, 98)}
+                    <path d="M 125 92 Q 137 89 149 91" fill="none" stroke="${eyeColor}" stroke-width="3.6" stroke-linecap="round"/>
+                </g>
+
+                <!-- Happy Eyes when patted -->
+                <g class="happy-eyes opacity-0 transition-opacity duration-200">
+                    <path d="M 73 99 Q 83 87 93 99" fill="none" stroke="${eyeColor}" stroke-width="4.2" stroke-linecap="round"/>
+                    <path d="M 127 99 Q 137 87 147 99" fill="none" stroke="${eyeColor}" stroke-width="4.2" stroke-linecap="round"/>
+                </g>
+
+                <!-- Distinct Beauty Mole under Right Eye -->
+                <circle cx="151" cy="109" r="2.4" fill="${eyeColor}"/>
+                `;
+            }
+
+            return '';
+        }
+
+        // Front Chibi Sticker Pig SVG (Exact Silhouette & Colors from Reference Image)
+        function getFrontStickerPigSVG(pig) {
+            const bodyGeometry = `
+                <!-- Chubby Body & Stubby Arms/Legs -->
+                <path d="M 76 135
+                         C 52 136, 40 154, 54 168
+                         C 60 172, 62 188, 63 200
+                         C 65 220, 96 222, 110 205
+                         C 124 222, 155 220, 157 200
+                         C 158 188, 160 172, 166 168
+                         C 180 154, 168 136, 144 135 Z" />
+                <!-- Big Chubby Cheeks & Head -->
+                <path d="M 110 34
+                         C 64 34, 42 66, 45 100
+                         C 47 125, 74 140, 110 140
+                         C 146 140, 173 125, 175 100
+                         C 178 66, 156 34, 110 34 Z" />
+                <!-- Droopy Folded Left Ear -->
+                <path d="M 78 40 C 52 20, 22 40, 34 65 C 42 78, 56 68, 64 56 Z" />
+                <!-- Droopy Folded Right Ear -->
+                <path d="M 142 40 C 168 20, 198 40, 186 65 C 178 78, 164 68, 156 56 Z" />
+            `;
+
+            // Mouth variation: open cute tongue on Gumayusi/Zeus/Delight, subtle flat under-snout on Kanavi/Zeka
+            const hasTongue = ['gumayusi', 'zeus', 'delight'].includes(pig.variant);
+            const mouthMarkup = hasTongue
+                ? `<path d="M 105 110 Q 110 121 115 110 Z" fill="#EE6B8E"/>`
+                : ``;
+
+            return `
+            <svg viewBox="0 0 220 240" class="w-40 h-44 sm:w-48 sm:h-52 overflow-visible drop-shadow-[0_10px_16px_rgba(219,39,119,0.18)]">
+                <!-- 1. THICK WHITE DIE-CUT STICKER BORDER -->
+                <g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="18" stroke-linejoin="round" stroke-linecap="round">
+                    ${bodyGeometry}
+                </g>
+
+                <!-- 2. PASTEL PINK CHIBI BODY & HEAD -->
+                <g fill="#FFD6E4" stroke="#F29BB8" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+                    <!-- Body -->
+                    <path d="M 76 135
+                             C 52 136, 40 154, 54 168
+                             C 60 172, 62 188, 63 200
+                             C 65 220, 96 222, 110 205
+                             C 124 222, 155 220, 157 200
+                             C 158 188, 160 172, 166 168
+                             C 180 154, 168 136, 144 135 Z" />
+                    <!-- Head -->
+                    <path d="M 110 34
+                             C 64 34, 42 66, 45 100
+                             C 47 125, 74 140, 110 140
+                             C 146 140, 173 125, 175 100
+                             C 178 66, 156 34, 110 34 Z" />
+                </g>
+
+                <!-- Droopy Ears (Animated Wiggle) -->
+                <g class="pig-ear-left" fill="#FFD6E4" stroke="#F29BB8" stroke-width="4" stroke-linejoin="round">
+                    <path d="M 78 40 C 52 20, 22 40, 34 65 C 42 78, 56 68, 64 56 Z" />
+                </g>
+                <g class="pig-ear-right" fill="#FFD6E4" stroke="#F29BB8" stroke-width="4" stroke-linejoin="round">
+                    <path d="M 142 40 C 168 20, 198 40, 186 65 C 178 78, 164 68, 156 56 Z" />
+                </g>
+
+                <!-- Cute Pink Paw Dimples on Both Stubby Hands -->
+                <circle cx="57" cy="155" r="4.8" fill="#F29BB8"/>
+                <circle cx="163" cy="155" r="4.8" fill="#F29BB8"/>
+
+                <!-- White Tummy Badge Circle + Signature Icon -->
+                <circle cx="110" cy="179" r="21" fill="#FFFFFF"/>
+                ${getTummyBadgeIconSVG(pig.variant)}
+
+                <!-- Forehead Curled Hair Tuft (Signature swirl on all 5 pigs) -->
+                <path d="M 107 52 C 99 64, 102 82, 110 81 C 110 75, 114 75, 118 80 C 122 83, 126 79, 125 75" fill="none" stroke="#F29BB8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                <!-- Double Horizontal Blush Lines on Cheeks -->
+                <g class="cheek-blush transition-transform duration-300" stroke="#F29BB8" stroke-width="2.5" stroke-linecap="round">
+                    <line x1="65" y1="112" x2="74" y2="112"/>
+                    <line x1="68" y1="116" x2="76" y2="116"/>
+                    <line x1="146" y1="112" x2="155" y2="112"/>
+                    <line x1="144" y1="116" x2="152" y2="116"/>
+                </g>
+
+                <!-- Cute Pink Oval Snout & Nostrils & Mouth -->
+                ${mouthMarkup}
+                <ellipse cx="110" cy="104" rx="13" ry="8.5" fill="#FF9EBB"/>
+                <ellipse cx="105.5" cy="104" rx="2.4" ry="3.4" fill="#F27396"/>
+                <ellipse cx="114.5" cy="104" rx="2.4" ry="3.4" fill="#F27396"/>
+
+                <!-- Character Specific Eyes, Brows, Glasses & Moles -->
+                ${getFaceDetailsSVG(pig.variant)}
+            </svg>
+            `;
+        }
+
+        // Belly-Down Sticker Pig SVG for Mode 1 ("Lấy Roi Đánh Heo" - Lật úp mông hồng viền sticker trắng)
+        function getBellyDownStickerPigSVG(pig) {
+            const backGeometry = `
+                <path d="M 76 135
+                         C 52 136, 40 154, 54 168
+                         C 60 172, 62 188, 63 200
+                         C 65 220, 96 222, 110 205
+                         C 124 222, 155 220, 157 200
+                         C 158 188, 160 172, 166 168
+                         C 180 154, 168 136, 144 135 Z" />
+                <path d="M 110 38
+                         C 64 38, 44 68, 47 100
+                         C 49 124, 74 138, 110 138
+                         C 146 138, 171 124, 173 100
+                         C 176 68, 156 38, 110 38 Z" />
+                <path d="M 78 42 C 52 22, 22 42, 34 66 C 42 78, 56 68, 64 56 Z" />
+                <path d="M 142 42 C 168 22, 198 42, 186 66 C 178 78, 164 68, 156 56 Z" />
+            `;
+
+            // Temple tips for pigs with glasses (#10 Zeus, #98 Gumayusi, #25 Delight)
+            let glassesBackStrap = '';
+            if (pig.variant === 'zeus') {
+                glassesBackStrap = `<path d="M 47 92 L 173 92" stroke="#FACC15" stroke-width="4" stroke-dasharray="18 90" stroke-linecap="round"/>`;
+            } else if (pig.variant === 'gumayusi' || pig.variant === 'delight') {
+                glassesBackStrap = `<path d="M 47 92 L 173 92" stroke="#59253A" stroke-width="3.8" stroke-dasharray="18 90" stroke-linecap="round"/>`;
+            }
+
+            return `
+            <svg viewBox="0 0 220 240" class="w-40 h-44 sm:w-48 sm:h-52 overflow-visible drop-shadow-[0_10px_16px_rgba(219,39,119,0.18)]">
+                <!-- 1. THICK WHITE STICKER BORDER -->
+                <g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="18" stroke-linejoin="round" stroke-linecap="round">
+                    ${backGeometry}
+                </g>
+
+                <!-- 2. PASTEL PINK BODY & HEAD FROM BACK -->
+                <g fill="#FFD6E4" stroke="#F29BB8" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+                    ${backGeometry}
+                </g>
+
+                ${glassesBackStrap}
+
+                <!-- Back Jersey Number Tag -->
+                <rect x="82" y="72" width="56" height="32" rx="14" fill="#FFFFFF" stroke="#F29BB8" stroke-width="3"/>
+                <text x="110" y="95" text-anchor="middle" fill="#DB2777" font-size="22" font-weight="900" font-family="'Baloo 2', sans-serif">#${pig.number}</text>
+
+                <!-- Plump Chibi Sticker Butt Cheeks -->
+                <g class="pig-butt">
+                    <circle cx="92" cy="176" r="26" fill="#FFC2D6" stroke="#F29BB8" stroke-width="3.8"/>
+                    <circle cx="128" cy="176" r="26" fill="#FFC2D6" stroke="#F29BB8" stroke-width="3.8"/>
+                    <path d="M 110 153 Q 110 176 110 198" fill="none" stroke="#EC4899" stroke-width="3.8" stroke-linecap="round"/>
+
+                    <!-- Cheek Blush Lines on Butt -->
+                    <line x1="75" y1="178" x2="83" y2="178" stroke="#F29BB8" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="137" y1="178" x2="145" y2="178" stroke="#F29BB8" stroke-width="2.5" stroke-linecap="round"/>
+
+                    <!-- Red Spank Glow When Whacked -->
+                    <g class="butt-red-glow opacity-0 transition-opacity duration-300">
+                        <circle cx="90" cy="176" r="20" fill="#FB7185" opacity="0.65"/>
+                        <circle cx="130" cy="176" r="20" fill="#FB7185" opacity="0.65"/>
+                    </g>
+
+                    <!-- Cute Curly Pig Tail -->
+                    <g class="pig-tail-wag">
+                        <path d="M 110 150 C 112 135, 128 134, 123 144 C 119 151, 107 145, 117 132" fill="none" stroke="#EC4899" stroke-width="4" stroke-linecap="round"/>
+                    </g>
+                </g>
+            </svg>
+            `;
+        }
+
+        // ============================================================
+        // 4. RENDER PIGS (SUPPORTS BOTH ROW & 2-1-2 STICKER FORMATION)
+        // ============================================================
+        function buildPigCardHTML(pig, isSpankMode, flipClass) {
+            const svgGraphic = isSpankMode ? getBellyDownStickerPigSVG(pig) : getFrontStickerPigSVG(pig);
+            return `
+            <div id="card-${pig.id}" class="pig-card flex flex-col items-center relative group w-full max-w-[205px] mx-auto ${flipClass}">
+                <!-- Floating Speech Bubble -->
+                <div id="bubble-${pig.id}" class="opacity-0 scale-75 pointer-events-none transition-all duration-300 absolute -top-12 z-30 bg-white/95 backdrop-blur border-3 border-pink-400 text-pink-900 font-bold text-xs sm:text-sm px-3.5 py-2 rounded-2xl shadow-[0_8px_20px_rgba(219,39,119,0.22)] text-center min-w-[155px] max-w-[205px]">
+                    <span id="bubble-text-${pig.id}">Ụt ịt~</span>
+                    <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white border-b-2 border-r-2 border-pink-400 rotate-45"></div>
+                </div>
+
+                <!-- Dynamic Particle & Tool Overlay Container -->
+                <div id="fx-${pig.id}" class="absolute inset-0 pointer-events-none z-20 flex items-center justify-center"></div>
+
+                <!-- Interactive Chibi Sticker Pig Figure -->
+                <div
+                    id="figure-${pig.id}"
+                    onclick="handlePigInteraction('${pig.id}', 'click')"
+                    onmouseenter="handlePigInteraction('${pig.id}', 'hover')"
+                    style="animation-delay: ${pig.delay};"
+                    class="pig-idle transition-transform duration-200 cursor-pointer hover:scale-105 select-none"
+                >
+                    ${svgGraphic}
+                </div>
+
+                <!-- Glossy Sticker Name & Number Plate -->
+                <div class="-mt-1 bg-white/95 backdrop-blur px-3.5 py-1.5 rounded-2xl shadow-md border-2 border-pink-200 text-center w-full">
+                    <div class="font-baloo font-extrabold text-pink-700 text-sm sm:text-base flex items-center justify-center gap-1.5 leading-tight">
+                        <span class="bg-gradient-to-r from-orange-500 to-pink-500 text-white text-xs px-2 py-0.5 rounded-full shadow-xs">#${pig.number}</span>
+                        <span>${pig.name}</span>
+                        <span>${pig.iconEmoji}</span>
+                    </div>
+                    <div class="text-[11px] text-pink-500 font-bold leading-tight mt-0.5">
+                        ${pig.badge}
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+
+        function renderPigs(withFlipAnim = false) {
+            const container = document.getElementById('pigsContainer');
+            const isSpankMode = currentMode === 'spank';
+            const flipClass = withFlipAnim ? 'pose-flip' : '';
+
+            if (layoutMode === 'sticker') {
+                // 2-1-2 Sticker Sheet Formation matching the uploaded reference photo!
+                const guma = pigsData.find(p => p.id === 'pig-98');
+                const zeus = pigsData.find(p => p.id === 'pig-10');
+                const kanavi = pigsData.find(p => p.id === 'pig-1');
+                const zeka = pigsData.find(p => p.id === 'pig-7');
+                const delight = pigsData.find(p => p.id === 'pig-25');
+
+                container.className = 'grid grid-cols-1 md:grid-cols-3 gap-4 items-center justify-items-center pt-4 pb-2 relative z-10 max-w-4xl mx-auto';
+                container.innerHTML = `
+                    <!-- Left Column: Gumayusi (#98 Top-Left) & Zeka (#7 Bottom-Left) -->
+                    <div class="flex flex-col gap-5 w-full items-center">
+                        ${buildPigCardHTML(guma, isSpankMode, flipClass)}
+                        ${buildPigCardHTML(zeka, isSpankMode, flipClass)}
+                    </div>
+                    <!-- Center Column: Kanavi (#1 Butterfly in Center) -->
+                    <div class="flex flex-col justify-center w-full items-center my-auto">
+                        ${buildPigCardHTML(kanavi, isSpankMode, flipClass)}
+                    </div>
+                    <!-- Right Column: Zeus (#10 Top-Right) & Delight (#25 Bottom-Right) -->
+                    <div class="flex flex-col gap-5 w-full items-center">
+                        ${buildPigCardHTML(zeus, isSpankMode, flipClass)}
+                        ${buildPigCardHTML(delight, isSpankMode, flipClass)}
+                    </div>
+                `;
+            } else {
+                // Standard 5-in-a-row Lineup
+                container.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5 items-end justify-items-center pt-6 pb-2 relative z-10';
+                container.innerHTML = pigsData.map(pig => buildPigCardHTML(pig, isSpankMode, flipClass)).join('');
+            }
+        }
+
+        // ============================================================
+        // 5. HANDLE INTERACTIONS (SPANK / HEAD PAT / WISH CLICK)
+        // ============================================================
+        const stateTimers = {};
+
+        function handlePigInteraction(pigId, triggerType) {
+            if (triggerType === 'hover') {
+                if (currentMode !== 'pat') return;
+                const now = Date.now();
+                if (now - lastPatTime < 420) return;
+                lastPatTime = now;
+            }
+
+            const pig = pigsData.find(p => p.id === pigId);
+            const cardEl = document.getElementById(`card-${pigId}`);
+            const figEl = document.getElementById(`figure-${pigId}`);
+            const fxEl = document.getElementById(`fx-${pigId}`);
+
+            if (currentMode === 'spank') {
+                if (triggerType === 'hover') return;
+
+                counts.spank++;
+                document.getElementById('spankCount').textContent = counts.spank;
+                playSquealSound();
+
+                figEl.classList.remove('anim-spank');
+                void figEl.offsetWidth;
+                figEl.classList.add('anim-spank');
+
+                cardEl.classList.add('is-spanked');
+                if (stateTimers[pigId]) clearTimeout(stateTimers[pigId]);
+                stateTimers[pigId] = setTimeout(() => cardEl.classList.remove('is-spanked'), 900);
+
+                const overlay = document.createElement('div');
+                overlay.className = 'w-full h-full relative flex items-center justify-center';
+                overlay.innerHTML = `
+                    <!-- Cartoon Cane / Stick SVG -->
+                    <svg viewBox="0 0 120 120" class="cane-fx w-28 h-28 absolute -right-4 bottom-4 drop-shadow-md">
+                        <rect x="20" y="54" width="85" height="12" rx="6" fill="#D97706" stroke="#78350F" stroke-width="3"/>
+                        <rect x="85" y="54" width="20" height="12" rx="4" fill="#FDE047" stroke="#78350F" stroke-width="2.5"/>
+                        <path d="M 30 50 L 18 38 M 45 48 L 42 32" stroke="#EF4444" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+
+                    <!-- Comic Hit Splash Starburst -->
+                    <svg viewBox="0 0 100 100" class="splash-fx w-24 h-24 absolute bottom-6">
+                        <polygon points="50,5 61,34 92,25 71,50 92,75 61,66 50,95 39,66 8,75 29,50 8,25 39,34" fill="#FACC15" stroke="#EF4444" stroke-width="4"/>
+                    </svg>
+
+                    <!-- Floating Comic Text "ÉC!" -->
+                    <div class="particle-fx absolute top-4 font-baloo font-extrabold text-xl sm:text-2xl bg-gradient-to-r from-red-500 to-rose-600 text-white px-3.5 py-0.5 rounded-full shadow-lg border-2 border-yellow-300">
+                        💥 ÉC! ÉC!
+                    </div>
+                `;
+                fxEl.appendChild(overlay);
+                setTimeout(() => overlay.remove(), 1000);
+
+                const spankLines = [
+                    `ÉC!! Đau mông ${pig.name} quá! 😭`,
+                    `Éc éc! Tha cho ${pig.name} #${pig.number} nha! 🍑`,
+                    `Ối dồi ôi ÉC!! 💦`
+                ];
+                showSpeechBubble(pigId, spankLines[Math.floor(Math.random() * spankLines.length)], 1400);
+
+            } else if (currentMode === 'pat') {
+                counts.pat++;
+                document.getElementById('patCount').textContent = counts.pat;
+                playOinkSound();
+
+                figEl.classList.remove('anim-pat');
+                void figEl.offsetWidth;
+                figEl.classList.add('anim-pat');
+
+                cardEl.classList.add('is-happy');
+                if (stateTimers[pigId]) clearTimeout(stateTimers[pigId]);
+                stateTimers[pigId] = setTimeout(() => cardEl.classList.remove('is-happy'), 1100);
+
+                const overlay = document.createElement('div');
+                overlay.className = 'w-full h-full relative flex items-center justify-center';
+                overlay.innerHTML = `
+                    <div class="hand-fx absolute -top-3 text-5xl drop-shadow-md">👋</div>
+                    <div class="particle-fx absolute top-2 flex items-center gap-1 bg-gradient-to-r from-pink-500 to-rose-400 text-white font-baloo font-extrabold px-3.5 py-0.5 rounded-full shadow-lg border-2 border-white text-sm sm:text-base">
+                        <span>💖</span>
+                        <span>Ụt ịt~</span>
+                        <span>${pig.iconEmoji}</span>
+                    </div>
+                `;
+                fxEl.appendChild(overlay);
+                setTimeout(() => overlay.remove(), 1000);
+
+                const patLines = [
+                    `Ụt ịt~ ${pig.name} thích quá đi! 🥰`,
+                    `Ụt ịt! Thương cậu nhất! 💖`,
+                    `Hihi xoa đầu ${pig.name} êm quá~ ✨`
+                ];
+                showSpeechBubble(pigId, patLines[Math.floor(Math.random() * patLines.length)], 1600);
+
+            } else if (currentMode === 'wish') {
+                if (triggerType === 'hover') return;
+                playOinkSound();
+                cardEl.classList.add('is-happy');
+                setTimeout(() => cardEl.classList.remove('is-happy'), 1000);
+                figEl.classList.remove('anim-pat');
+                void figEl.offsetWidth;
+                figEl.classList.add('anim-pat');
+                showSpeechBubble(pigId, `Gửi lời chúc cho ${pig.name} và cả đội ở ô bên dưới nha! 💌`, 2200);
+            }
+        }
+
+        const bubbleTimers = {};
+        function showSpeechBubble(pigId, text, duration = 2600) {
+            const bubble = document.getElementById(`bubble-${pigId}`);
+            const bubbleText = document.getElementById(`bubble-text-${pigId}`);
+            if (!bubble || !bubbleText) return;
+
+            bubbleText.textContent = text;
+            bubble.classList.remove('opacity-0', 'scale-75');
+            bubble.classList.add('opacity-100', 'scale-100');
+
+            if (bubbleTimers[pigId]) clearTimeout(bubbleTimers[pigId]);
+            bubbleTimers[pigId] = setTimeout(() => {
+                bubble.classList.remove('opacity-100', 'scale-100');
+                bubble.classList.add('opacity-0', 'scale-75');
+            }, duration);
+        }
+
+        // ============================================================
+        // 6. MODE 3: WISHES + CONFETTI SHOWER + 3 REQUIRED RESPONSES
+        // ============================================================
+        const requiredWishResponses = [
+            "Cảm ơn những phép mầu của bọn tớ",
+            "Chúng tớ yêu các cậu",
+            "Chúng ta sẽ dành chiến thắng nhé"
+        ];
+
+        function matchWishMessage(msg) {
+            const lower = msg.toLowerCase();
+            if (lower.includes('thắng') || lower.includes('vô địch') || lower.includes('cố lên') || lower.includes('win') || lower.includes('chiến')) {
+                return requiredWishResponses[2];
+            }
+            if (lower.includes('yêu') || lower.includes('thương') || lower.includes('love') || lower.includes('cưng')) {
+                return requiredWishResponses[1];
+            }
+            if (lower.includes('phép màu') || lower.includes('phép mầu') || lower.includes('cảm ơn') || lower.includes('miracle')) {
+                return requiredWishResponses[0];
+            }
+            return null;
+        }
+
+        function quickWish(text) {
+            const input = document.getElementById('wishInput');
+            input.value = text;
+            sendWish();
+        }
+
+        function sendWish() {
+            const input = document.getElementById('wishInput');
+            const message = input.value.trim();
+
+            if (!message) {
+                input.focus();
+                input.classList.add('ring-4', 'ring-rose-300');
+                setTimeout(() => input.classList.remove('ring-4', 'ring-rose-300'), 650);
+                return;
+            }
+
+            counts.wish++;
+            document.getElementById('wishCount').textContent = counts.wish;
+            playCheerSound();
+            launchConfettiShower();
+
+            const specificReply = matchWishMessage(message);
+
+            pigsData.forEach((pig, idx) => {
+                const cardEl = document.getElementById(`card-${pig.id}`);
+                const figEl = document.getElementById(`figure-${pig.id}`);
+                const fxEl = document.getElementById(`fx-${pig.id}`);
+
+                setTimeout(() => {
+                    cardEl.classList.add('is-happy');
+                    setTimeout(() => cardEl.classList.remove('is-happy'), 3500);
+
+                    figEl.classList.remove('anim-jump');
+                    void figEl.offsetWidth;
+                    figEl.classList.add('anim-jump');
+
+                    const replyText = specificReply || requiredWishResponses[idx % requiredWishResponses.length];
+                    showSpeechBubble(pig.id, replyText, 4800);
+
+                    const overlay = document.createElement('div');
+                    overlay.className = 'w-full h-full relative flex items-center justify-center';
+                    overlay.innerHTML = `<div class="particle-fx absolute top-0 text-2xl">💖✨${pig.iconEmoji}</div>`;
+                    fxEl.appendChild(overlay);
+                    setTimeout(() => overlay.remove(), 1100);
+                }, idx * 95);
+            });
+
+            input.value = '';
+        }
+
+        // ============================================================
+        // 7. CANVAS CONFETTI & HEARTS SHOWER
+        // ============================================================
+        let confettiParticles = [];
+        let confettiAnimId = null;
+
+        function launchConfettiShower() {
+            const canvas = document.getElementById('confettiCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const colors = ['#FF6B00', '#F472B6', '#FACC15', '#C084FC', '#FB7185', '#FFFFFF'];
+            for (let i = 0; i < 80; i++) {
+                confettiParticles.push({
+                    x: Math.random() * canvas.width,
+                    y: -20 - Math.random() * 120,
+                    vx: (Math.random() - 0.5) * 5,
+                    vy: 3 + Math.random() * 4.5,
+                    size: 7 + Math.random() * 7,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rotation: Math.random() * 360,
+                    vRot: (Math.random() - 0.5) * 10,
+                    isHeart: Math.random() > 0.6
+                });
+            }
+
+            if (!confettiAnimId) {
+                function renderConfetti() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    confettiParticles.forEach((p) => {
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.rotation += p.vRot;
+
+                        ctx.save();
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate((p.rotation * Math.PI) / 180);
+                        ctx.fillStyle = p.color;
+
+                        if (p.isHeart) {
+                            ctx.font = `${p.size * 1.6}px sans-serif`;
+                            ctx.fillText('💗', -p.size / 2, p.size / 2);
+                        } else {
+                            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+                        }
+                        ctx.restore();
+                    });
+
+                    confettiParticles = confettiParticles.filter(p => p.y < canvas.height + 30);
+                    if (confettiParticles.length > 0) {
+                        confettiAnimId = requestAnimationFrame(renderConfetti);
+                    } else {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        confettiAnimId = null;
+                    }
+                }
+                confettiAnimId = requestAnimationFrame(renderConfetti);
+            }
+        }
+
+        // ============================================================
+        // 8. MODE SWITCHING CONTROLLER
+        // ============================================================
+        function setMode(mode) {
+            const previousMode = currentMode;
+            currentMode = mode;
+
+            const instructionEl = document.getElementById('modeInstruction');
+            const wishBox = document.getElementById('wishBoxContainer');
+
+            if (mode === 'spank') {
+                instructionEl.innerHTML = '<span>🥢</span><span><b>Chế độ Lấy Roi Đánh:</b> 5 bé heo đã lật úp lộ mông hồng! Nhấp vào từng heo để đánh đòn & kêu <b>ÉC!</b></span>';
+                instructionEl.className = 'inline-flex items-center gap-2 bg-rose-50/95 border-2 border-rose-300 text-rose-800 px-5 py-1.5 rounded-full font-bold text-xs sm:text-sm shadow-sm';
+                wishBox.classList.add('hidden');
+            } else if (mode === 'pat') {
+                instructionEl.innerHTML = '<span>👋</span><span><b>Chế độ Xoa Đầu:</b> Nhấp hoặc rê chuột lên đầu Gumayusi, Zeus, Kanavi, Zeka, Delight để xoa đầu (Kêu <b>Ụt ịt~</b>)</span>';
+                instructionEl.className = 'inline-flex items-center gap-2 bg-pink-50/95 border-2 border-pink-300 text-pink-800 px-5 py-1.5 rounded-full font-bold text-xs sm:text-sm shadow-sm';
+                wishBox.classList.add('hidden');
+            } else if (mode === 'wish') {
+                instructionEl.innerHTML = '<span>💌</span><span><b>Chế độ Gửi Lời Chúc:</b> Nhập lời nhắn bên dưới để 5 bé heo HLE nhảy lên đáp lời!</span>';
+                instructionEl.className = 'inline-flex items-center gap-2 bg-amber-50/95 border-2 border-orange-300 text-orange-900 px-5 py-1.5 rounded-full font-bold text-xs sm:text-sm shadow-sm';
+                wishBox.classList.remove('hidden');
+            }
+
+            const btnSpank = document.getElementById('btnModeSpank');
+            const btnPat = document.getElementById('btnModePat');
+            const btnWish = document.getElementById('btnModeWish');
+
+            btnSpank.className = `clay-btn flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2.5 sm:py-3 px-2 sm:px-4 rounded-2xl font-bold cursor-pointer ${mode === 'spank' ? 'clay-btn-spank-active' : 'clay-btn-inactive'}`;
+            btnPat.className = `clay-btn flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2.5 sm:py-3 px-2 sm:px-4 rounded-2xl font-bold cursor-pointer ${mode === 'pat' ? 'clay-btn-pat-active' : 'clay-btn-inactive'}`;
+            btnWish.className = `clay-btn flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2.5 sm:py-3 px-2 sm:px-4 rounded-2xl font-bold cursor-pointer ${mode === 'wish' ? 'clay-btn-wish-active' : 'clay-btn-inactive'}`;
+
+            const poseChanged = (previousMode === 'spank' && mode !== 'spank') || (previousMode !== 'spank' && mode === 'spank');
+            renderPigs(poseChanged);
+        }
+
+        window.onload = () => {
+            setMode('pat');
+            updateBGMUI();
+            // Attempt gentle auto-start if browser allows, otherwise starts immediately on first click
+            try {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioContextClass) {
+                    audioCtx = new AudioContextClass();
+                    if (audioCtx.state === 'running') {
+                        startBGM();
+                    }
+                }
+            } catch (e) {
+                // Will auto-start on first user interaction via pointerdown listener
+            }
+        };
+    </script>
+</body>
+</html>
